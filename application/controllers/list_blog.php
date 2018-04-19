@@ -20,7 +20,21 @@ class list_blog extends CI_Controller {
 	public function add()
 	{
 		$this->load->model('Artikel');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('judul_blog','judul', 'required', array('required'=>'Isi %s , '));
+		$this->form_validation->set_rules('tanggal_blog','tanggal', 'required', array('required'=>'Isi %s , '));
+		$this->form_validation->set_rules('content','content', 'required', array('required'=>'Isi %s , '));
+		$this->form_validation->set_rules('gambar_blog','gambar', 'required', array('required'=>'Isi %s , '));
+		$this->form_validation->set_rules('E-mail','e-mail', 'required', array('required'=>'Isi %s , '));
+		$this->form_validation->set_rules('Pengarang','pengarang', 'required', array('required'=>'Isi %s , '));
+		$this->form_validation->set_rules('Sumber','sumber', 'required', array('required'=>'Isi %s , '));
 		$data['tipe'] = "Add";
+
+		if ($this->form_validation->run()==FALSE){
+			$this->load->view('plus');
+		}
+		else{
+
 
 		if ($this->input->post('simpan')) {
 			$upload = $this->Artikel->upload();
@@ -33,8 +47,9 @@ class list_blog extends CI_Controller {
 			}
 		}
 
-		$this->load->view('home_view_form', $data);
+		$this->load->view('plus', $data);
 	}
+}
 
 	public function edit($id){
 		$this->load->model("Artikel");

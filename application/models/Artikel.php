@@ -43,15 +43,38 @@ class Artikel extends CI_Model {
 			return $return;
 		}
 	}
+
+	public function insert($upload)
+		{
+			$data = array(
+				'id_blog' => '',
+				'judul_blog' => $this->input->post('input_judul'),
+				'tanggal_blog' => $this->input->post('input_tanggal'),
+				'content' => $this->input->post('input_content'),
+				'Email' => $this->input->post('input_pengarang'),
+				'Pengarang' => $this->input->post('input_email'),
+				'Sumber'  => $this->input->post('input_jenis'),
+				'gambar_blog' => $upload['file']['file_name']
+				
+				
+			);
+
+			$this->db->insert('blog', $data);
+		}
 	
 	// Fungsi untuk menyimpan data ke database
 	public function save($upload){
 		$data = array(
-			'id_blog' => $this->input->post('null'),
-			'judul_blog' => $this->input->post('judul_atk'),
-			'tanggal_blog' => $this->input->post('tggl_atk'),
-			'content' => $this->input->post('isi_atk'),
-			'gambar_blog' => $upload['file']['file_name']		
+			'id_blog' => $this->input->post(''),
+			'judul_blog' => $this->input->post('judul_blog'),
+			'tanggal_blog' => $this->input->post('tanggal_blog'),
+			'content' => $this->input->post('content'),
+			'Email' => $this->input->post('Email'),
+			'Pengarang' => $this->input->post('Pengarang'),
+			'Sumber' => $this->input->post('Sumber'),
+			'gambar_blog' => $upload['file']['file_name']
+			
+			
 		);
 		
 		$this->db->insert('nama', $data);

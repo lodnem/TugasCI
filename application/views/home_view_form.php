@@ -27,7 +27,7 @@
     <br><br><br>
 
 	<div class="container">
-		<h1><?=$tipe?> Articel</h1>
+		<!-- <h1><?=$tipe?> Articel</h1>
 		<form method="post" class="form-horizontal" enctype="multipart/form-data">
 			<div class="form-group">
 				<label class="control-label col-sm-2">
@@ -59,9 +59,9 @@
 		      <div class="col-sm-10">
 		        <span class="input-group-addon"><input type="file" required name="gambar_blog" class="file"></span>
 		      </div><br>
-		    </div>
+		    </div> -->
 			<center>
-			<input class="btn btn-primary" type="submit" name="simpan" value="simpan">
+			<input class="btn btn-primary" type="submit" name="simpan" value="Tambahan">
 			</center>
 		</form>
 	</div>
