@@ -22,13 +22,12 @@ class list_blog extends CI_Controller {
 		$this->load->model('Artikel');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('judul_blog','judul', 'required', array('required'=>'Isi %s , '));
-		$this->form_validation->set_rules('tanggal_blog','tanggal', 'required', array('required'=>'Isi %s , '));
+		$this->form_validation->set_rules('tanggal_blog','tanggal nya', 'required', array('required'=>'jangan kosongi dong %s , '));
 		$this->form_validation->set_rules('content','content', 'required', array('required'=>'Isi %s , '));
 		$this->form_validation->set_rules('gambar_blog','gambar', 'required', array('required'=>'Isi %s , '));
 		$this->form_validation->set_rules('E-mail','e-mail', 'required', array('required'=>'Isi %s , '));
 		$this->form_validation->set_rules('Pengarang','pengarang', 'required', array('required'=>'Isi %s , '));
 		$this->form_validation->set_rules('Sumber','sumber', 'required', array('required'=>'Isi %s , '));
-		$data['tipe'] = "Add";
 
 		if ($this->form_validation->run()==FALSE){
 			$this->load->view('plus');
