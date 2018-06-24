@@ -44,6 +44,11 @@ class list_blog extends CI_Controller {
 
 	public function add()
 	{
+
+		if(!$this->session->userdata('logged_in')){
+			redirect('user/login');
+ 		}
+
 		$this->load->model('Artikel');
 		$this->load->model('category_model');
 		
@@ -79,6 +84,9 @@ class list_blog extends CI_Controller {
 }
 
 	public function edit($id){
+		if(!$this->session->userdata('logged_in')){
+			redirect('user/login');
+		}
 		$this->load->model("Artikel");
 		$this->load->model("category_model");
 		$this->load->library('form_validation');
@@ -95,6 +103,9 @@ class list_blog extends CI_Controller {
 
 
 	public function delete($id){
+		if(!$this->session->userdata('logged_in')){
+			redirect('user/login');
+		}
 		$this->load->model("Artikel");
 		$this->Artikel->hapus($id);
 		redirect("list_blog");

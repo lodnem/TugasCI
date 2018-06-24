@@ -74,9 +74,58 @@
                         <a class="nav-link" href="<?php echo site_url() ?>datatables">Datatables</a>
                     </li>
                     
+                    <?php if(!$this->session->userdata('logged_in')) : ?>
+              <div class="btn-group" role="group" aria-label="Data baru">
+                <?php echo anchor('user/register', 'Sign Up', array('class' => 'btn btn-outline-light')); ?>
+                <?php echo anchor('user/login', 'Sign In', array('class' => 'btn btn-outline-light')); ?>
+              </div>
+            <?php endif; ?>
+
+            <?php if($this->session->userdata('logged_in')) : ?>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              <li class="nav-item">
+                <a class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
+                  <font color="white">Logout</font>
+                </a>
+              </li>
+            <?php endif; ?>
+
                 </ul>
                 
             </div>
         </nav>
+
+        <?php if($this->session->flashdata('user_registered')): ?>
+          <?php echo '<div class="alert alert-success" role="alert">'.$this->session->flashdata('user_registered').'</div>'; ?>
+        <?php endif; ?>
+        <?php if($this->session->flashdata('login_failed')): ?>
+          <?php echo '<div class="alert alert-danger">'.$this->session->flashdata('login_failed').'</div>'; ?>
+        <?php endif; ?>
+
+        <?php if($this->session->flashdata('user_loggedin')): ?>
+          <?php echo '<div class="alert alert-success">'.$this->session->flashdata('user_loggedin').'</div>'; ?>
+        <?php endif; ?>
+
+         <?php if($this->session->flashdata('user_loggedout')): ?>
+          <?php echo '<div class="alert alert-success">'.$this->session->flashdata('user_loggedout').'</div>'; ?>
+        <?php endif; ?>
+
+     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Pilihen logout cah kalau ingin keluar atau pindah akun </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="<?php echo base_url() ?>user/logout">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div> 
         
         <!-- akhir Header -->

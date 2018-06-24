@@ -30,6 +30,10 @@ class Category extends CI_Controller{
 
 	public function create() 
 	{
+		{	
+		if(!$this->session->userdata('logged_in')){
+			redirect('user/login');
+		}
 		// Judul Halaman
 		$data['page_title'] = 'Buat Kategori Baru';
 
@@ -57,6 +61,7 @@ class Category extends CI_Controller{
 			redirect('category');
 		}
 	}
+}
 
 	// Menampilkan semua artikel dalam kategori yang dipilih
 	public function artikel($id) 
@@ -77,6 +82,10 @@ class Category extends CI_Controller{
 	// Membuat fungsi edit
 	public function edit($id = NULL)
 	{
+
+		if(!$this->session->userdata('logged_in')){
+			redirect('user/login');
+		}
 
 		$data['page_title'] = 'Edit Kategori';
 
@@ -124,6 +133,9 @@ class Category extends CI_Controller{
 
 	public function delete($id)
 	{
+		if(!$this->session->userdata('logged_in')){
+			redirect('user/login');
+		}
 
 		$data['page_title'] = 'Delete category';
 
