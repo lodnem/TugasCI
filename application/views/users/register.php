@@ -40,6 +40,17 @@
 						<label>Konfirmasi Password</label>
 						<input type="password" class="form-control" name="password2" placeholder="Ulangi Password">
 					</div>
+					<div class="form-group">
+					    <label for="">Pilih level</label>
+					    <div class="form-check">
+					        <input class="form-check-input" type="radio" name="membership" id="goldmember" value="2" checked>
+					        <label class="form-check-label" for="goldmember">level newbei</label>
+					    </div>
+					    <div class="form-check">
+					        <input class="form-check-input" type="radio" name="membership" id="silvermember" value="3">
+					        <label class="form-check-label" for="silvermember">level author </label>
+					    </div>
+					</div>
 					<button type="submit" class="btn btn-primary btn-block">Sign Up</button>
 				<?php echo form_close(); ?>
 			</div>

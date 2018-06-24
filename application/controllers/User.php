@@ -41,7 +41,7 @@ class User extends CI_Controller{
 
 	// Log in user
 	public function login(){
-		$data['page_title'] = 'Sign In Tong';
+		$data['page_title'] = 'Sign In Tsong';
 
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
@@ -65,7 +65,8 @@ class User extends CI_Controller{
 		$user_data = array(
 			'user_id' => $user_id,
 			'username' => $username,
-			'logged_in' => true
+			'logged_in' => true,
+			'level' => $this->user_model->get_user_level($user_id),
 		);
 
 		$this->session->set_userdata($user_data);
@@ -73,15 +74,34 @@ class User extends CI_Controller{
 		// Set message
 		$this->session->set_flashdata('user_loggedin', 'Anda sudah login loo');
 
-		redirect('list_blog');
+		//redirect('list_blog');
+		redirect('user/dashboard');
 	} else {
 		// Set message
 		$this->session->set_flashdata('login_failed', 'Login gagal, periksa username dan password anda');
 
 		redirect('user/login');
-	}		
-		}
 	}
+}
+}
+
+	// Fungsi Dashboard
+	function dashboard()
+	{
+		// Must login
+		if(!$this->session->userdata('logged_in')) 
+			redirect('user/login');
+
+		$user_id = $this->session->userdata('user_id');
+
+		// Dapatkan detail dari User
+		$data['user'] = $this->user_model->get_user_details( $user_id );
+
+		// Load view
+		$this->load->view('templates/header', $data, FALSE);
+		$this->load->view('users/dashboard', $data, FALSE);
+		$this->load->view('templates/footer', $data, FALSE);
+	}		
 
 	// Log user out
 	public function logout(){
