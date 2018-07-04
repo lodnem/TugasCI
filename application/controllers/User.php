@@ -101,6 +101,19 @@ class User extends CI_Controller{
 		$this->load->view('templates/header', $data, FALSE);
 		$this->load->view('users/dashboard', $data, FALSE);
 		$this->load->view('templates/footer', $data, FALSE);
+
+		 
+
+ 		// $userData = $this->get_userdata();
+   //      if ($userData['fk_level_id'] === '1'){
+   //          $this->load->view('templates/header');
+   //          $this->load->view('Dashboard', $data);
+   //          $this->load->view('templates/footer');
+   //      } else if ($userData['fk_level_id'] === '2'){
+   //          $this->load->view('templates/header');
+   //          $this->load->view('dashboard2', $data);
+   //          $this->load->view('templates/footer');
+   //  }
 	}		
 
 	// Log user out

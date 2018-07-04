@@ -1,7 +1,7 @@
 <div class="container">
    <div class="py-5 text-center">
        <h2>Selamat datang <?php echo $user->nama ?> <span class="badge badge-secondary"><?php echo $user->nama_level ?></span></h2>
-       <?php echo "<br> Nice to meet you!"; ?>
+       <?php echo "<br> ciieelaaaa!"; ?>
        </h2><br><br>
 +   		<div class="row">
 +   			<div class="col-sm"></div>
